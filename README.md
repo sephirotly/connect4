@@ -1,3 +1,3 @@
 # connect4
-DENIS STANGA ANDREI 5AII
-forza 4
+DENIS ANDREI STANGA 5AII
+forza 4 per tpsit
