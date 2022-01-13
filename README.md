@@ -1,2 +1,3 @@
 # connect4
+DENIS STANGA ANDREI 5AII
 forza 4
