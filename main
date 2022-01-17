@@ -1,0 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Connect_4_Project;
+
+import java.io.*;
+import java.util.*;
+/**
+ *
+ * @author 2230999
+ */
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+       
+                
+        Connect_4_Table Table= new Connect_4_Table();
+        Connect_4_Player Player= new Connect_4_Player();
+   
+        
+        Table.newGame();
+        Table.display();
+      
+      
+            Player.turn(Player.vincitore,Player.turn);
+            Table.display();
+            
+            
+           
+            
+        
+      
+    }
+		
+         
+        
+}
