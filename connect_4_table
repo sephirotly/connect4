@@ -1,0 +1,67 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Connect_4_Project;
+
+
+
+/**
+ *
+ * @author 2230999
+ */
+public class Connect_4_Table {
+    
+   
+        
+        char[][] Table = new char[6][7];  //campo da gioco
+        
+        
+        public Connect_4_Table(){  //Costruttore
+            char[][] Table = new char[6][7]; 
+        }
+        
+        public void newGame(){
+            
+        for(int riga=0;riga<Table.length;riga++){    // Inizializzo e lo metto vuoto anche per nuova partita
+            for (int col=0;col<Table[0].length;col++){
+              Table[riga][col]=' ';
+                }   
+            }
+        }
+        
+        public void display(){    //Stampa il campo da gioco ogni turno
+           	System.out.println(" 0 1 2 3 4 5 6");
+		System.out.println("---------------");
+		for (int row = 0; row < Table.length; row++){
+			System.out.print("|");
+			for (int col = 0; col < Table[0].length; col++){
+				System.out.print(Table[row][col]);
+				System.out.print("|");
+			}
+			System.out.println();
+			System.out.println("---------------");
+		}
+		System.out.println(" 0 1 2 3 4 5 6");
+		System.out.println();
+            
+    }
+        public  boolean validity(int column, char[][] grid){  //verifica che sia possibile l'inserimento del Token
+		//colonna valida
+		if (column < 0 || column > grid[0].length){
+			return false;
+		}
+		
+		//colonna piena
+		if (grid[0][column] != ' '){
+			return false;
+		}
+		
+		return true;
+	}
+}
+        
+        
+    
+
