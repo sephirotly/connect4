@@ -1,0 +1,121 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Connect_4_Project;
+
+import java.io.*;
+import java.util.*;
+/**
+ *
+ * @author 2230999
+ */
+public class Connect_4_Player {
+    
+  
+    Connect_4_Table Tavolo= new Connect_4_Table();  //propriet�
+    int turn;
+    char player='R' ;
+    boolean vincitore;
+    int giocata;
+    
+    public Connect_4_Player(){ // costruttore
+    int turn=1;
+    char player='R' ;
+    boolean vincitore=false;
+    }
+    
+    public void switchPlayer(char player, int turn) {  // switch player
+        if(player=='R'){
+            player='B';}
+        else{
+            player='R';}
+        turn++;
+    }
+     public void turn(boolean vincitore,int turno){  //giocare un turno
+        while(vincitore==false && turno<=42){
+           
+            boolean validit�;
+            Scanner scanner= new Scanner(System.in);
+           
+            do{
+                Tavolo.display();
+                System.out.print("Giocatore "+ player +" scegli una colonna da 0 a 6: ");
+                giocata=scanner.nextInt();
+                validit�=Tavolo.validity(giocata,Tavolo.Table );
+            }
+            
+          while(validit�==false);  
+            
+            
+            
+        }
+        
+        for(int riga=Tavolo.Table.length-1;riga>=0;riga--){
+            if(Tavolo.Table[riga][giocata]==' '){
+                Tavolo.Table[riga][giocata]=player;
+                break;
+            }
+        }
+        if(this.vincitore= this.winner(this.player, Tavolo.Table)){
+                if(this.player=='R'){
+                    System.out.println("Ha vinto il giocatore Rosso");                   
+                }
+                else{
+                    System.out.println("Ha vinto il giocatore Bianco"); 
+                }
+               
+            }
+        this.switchPlayer(player, turn);
+        
+    }
+     
+     
+    public boolean winner( char player,char[][] Tabella){  // 4 orizzontali
+        for(int riga=0;riga<Tabella.length;riga++){
+            for(int col=0;col<Tabella[0].length-3;col++){
+                if(Tabella[riga][col]== player &&
+                        Tabella[riga][col+1]==player && 
+                        Tabella[riga][col+2]==player && 
+                        Tabella[riga][col+3]==player){
+                    return true;
+                }
+            }
+        }
+       for(int riga=0;riga<Tabella.length-3;riga++){   //4 verticali
+            for(int col=0;col<Tabella[0].length;col++){
+                 if(Tabella[riga][col]== player &&
+                        Tabella[riga+1][col]==player && 
+                        Tabella[riga+2][col]==player && 
+                        Tabella[riga+3][col]==player){
+                    return true;
+                 }
+            }
+        }
+        for(int riga=3;riga<Tabella.length;riga++){ // 4 diagonali ascendente
+            for(int col=0;col<Tabella[0].length-3;col++){
+                 if(Tabella[riga][col]== player &&
+                        Tabella[riga-1][col+1]==player && 
+                        Tabella[riga-2][col+2]==player && 
+                        Tabella[riga-3][col+3]==player){
+                    return true;
+                 }
+            }
+        }
+        
+        
+         for(int riga=0;riga<Tabella.length-3;riga++){  // 4 diagonali discendente
+            for(int col=0;col<Tabella[0].length-3;col++){
+                 if(Tabella[riga][col]== player &&
+                        Tabella[riga+1][col+1]==player && 
+                        Tabella[riga+2][col+2]==player && 
+                        Tabella[riga+3][col+3]==player){
+                    return true;
+                }
+            }
+        }
+        return false;  
+    }   
+}
+
